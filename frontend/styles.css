@@ -1,0 +1,5 @@
+body { font-family: Inter, Arial, sans-serif; background: #f7f7f8; color: #111; }
+h1 { margin-bottom: 12px; }
+textarea { font-family: inherit; padding: 8px; border-radius: 6px; border: 1px solid #ddd; }
+button { background: #2563eb; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+button:hover { opacity: 0.95; }

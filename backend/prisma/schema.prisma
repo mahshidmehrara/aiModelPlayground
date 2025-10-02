@@ -1,0 +1,33 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Session {
+  id         String     @id @default(cuid())
+  prompt     String
+  createdAt  DateTime   @default(now())
+  startedAt  DateTime?
+  finishedAt DateTime?
+  models     ModelRun[]
+}
+
+model ModelRun {
+  id            String   @id @default(cuid())
+  session       Session  @relation(fields: [sessionId], references: [id])
+  sessionId     String
+  modelKey      String
+  provider      String
+  status        String   @default("pending")
+  streamedText  String   @default("")
+  startedAt     DateTime?
+  finishedAt    DateTime?
+  latencyMs     Int?
+  tokens        Int?
+  estimatedCost Float?
+  errorMsg      String?
+}
